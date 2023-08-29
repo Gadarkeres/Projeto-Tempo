@@ -22,8 +22,7 @@ const getWeatherData =  async(city) => {
     return data
 }
 
-const showdata =  async (city) => {
-    
+const showdata =  async (city) => { 
     try {
     errorMessage.classList.add("hide2")
     const data =  await getWeatherData(city)
