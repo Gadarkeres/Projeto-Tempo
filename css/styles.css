@@ -13,7 +13,16 @@ body{
     height: 100vh;
     
 }
-
+.hide2{
+    display: none;
+}
+.paragrafo-error{
+    background-color: rgba(223, 96, 96, 0.605);
+    color: rgb(253, 0, 0);
+    margin-left: 20px;
+    padding: 20px;
+    border-radius: 5px;
+}
 .hide{
     display: none;
 }

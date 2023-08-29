@@ -12,6 +12,7 @@ const countryElement = document.querySelector('#country')
 const humidityElement = document.querySelector('#humidity span')
 const windElement = document.querySelector('#wind span')
 const weatherContainer = document.querySelector('#weather-data')
+const errorMessage = document.querySelector('.hide2')
 
 const getWeatherData =  async(city) => {
     const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}&lang=pt_br`
@@ -23,8 +24,8 @@ const getWeatherData =  async(city) => {
 
 const showdata =  async (city) => {
     
-    
-    
+    try {
+    errorMessage.classList.add("hide2")
     const data =  await getWeatherData(city)
     cityElement.innerText = data.name
     tempElement.innerText = parseInt(data.main.temp)
@@ -33,7 +34,14 @@ const showdata =  async (city) => {
     humidityElement.innerText = `${data.main.humidity}%`
     windElement.innerText = `${data.wind.speed}km/h`
     weatherContainer.classList.remove("hide")
-
+   
+    } catch (error) {
+        weatherContainer.classList.add("hide")
+        errorMessage.classList.remove("hide2")
+        console.log(`Erro:${error}`)
+        return 
+    
+    }
 }
 
 
@@ -42,7 +50,7 @@ e.preventDefault()
 const city = cityinput.value;
 
 showdata(city)
-error(city)
+
 })
 
 cityinput.addEventListener("keyup", (e) => {
